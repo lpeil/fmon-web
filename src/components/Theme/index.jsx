@@ -10,7 +10,11 @@ const theme = createMuiTheme({
   },
 });
 
-const Theme = ({ children }) => <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+const Theme = ({ children }) => (
+  <MuiThemeProvider theme={theme}>
+    {children}
+  </MuiThemeProvider>
+);
 
 Theme.propTypes = {
   children: PropTypes.node,

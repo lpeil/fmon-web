@@ -1,16 +1,17 @@
 import React from 'react';
 
 import { Grid } from '@material-ui/core';
-
-import Theme from './utils/Theme';
-import { Navbar } from './components';
+import { BrowserRouter } from 'react-router-dom';
+import { Navbar, Theme } from './components';
 
 const App = () => (
-  <Theme>
-    <Grid container direction="column">
-      <Navbar />
-    </Grid>
-  </Theme>
+  <BrowserRouter>
+    <Theme>
+      <Grid container direction="column">
+        <Navbar />
+      </Grid>
+    </Theme>
+  </BrowserRouter>
 );
 
 export default App;
