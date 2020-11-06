@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 
-const NavbarLogo = () => (
+const NavbarLinks = () => (
   <Grid container direction="row" justify="center" className="links">
     <Link to="/">Início</Link>
     <Link to="/news">Notícias</Link>
@@ -11,4 +11,4 @@ const NavbarLogo = () => (
   </Grid>
 );
 
-export default NavbarLogo;
+export default NavbarLinks;

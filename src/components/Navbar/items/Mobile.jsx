@@ -33,7 +33,7 @@ const userLinks = [
   { name: 'Sair', url: '/auth/logout', icon: ExitToApp },
 ];
 
-const NavMobile = () => {
+const NavbarMobile = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const toggleDrawer = (open) => () => {
@@ -73,4 +73,4 @@ const NavMobile = () => {
   );
 };
 
-export default NavMobile;
+export default NavbarMobile;
