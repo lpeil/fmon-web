@@ -1,0 +1,28 @@
+/// @name navbar
+/// @group components
+
+.home-index {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  margin-top: 50px;
+
+  .grid {
+    width: 80%;
+
+    .card {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .fullHeight {
+      height: 500px;
+    }
+    
+    .halfHeight {
+      height: 240px;
+    }
+  }
+}

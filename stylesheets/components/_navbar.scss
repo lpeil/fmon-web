@@ -1,0 +1,57 @@
+/// @name navbar
+/// @group components
+
+$navbar-height: 75px;
+
+.navbar {
+  position: sticky;
+  height: $navbar-height;
+  background-color: $primary;
+
+  .logo {
+    height: $navbar-height;
+    width: 60%;
+    object-fit: cover;
+  }
+
+  .links {
+    a {
+      margin: 0 15px;
+
+      color: $white;
+      font-size: 18px;
+    }
+  }
+
+  .user-options {
+    .icon {
+      color: $white;
+      font-size: 24px;
+    }
+  }
+
+  .mobile {
+    button {
+      margin-right: 5px; 
+
+      svg {
+        color: $white;
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  width: 80vw;
+
+  flex-direction: column;
+
+  .mobile-link {
+    width: 100%;
+  }
+
+  .mobile-list {
+    width: 100%;
+  }
+}
