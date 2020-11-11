@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Link from 'next/link';
 import {
@@ -17,22 +18,36 @@ import {
 } from '@material-ui/icons';
 
 const NavbarUserOptions = () => {
+  const user = useSelector((state) => state.user);
   const [menuUser, setMenuUser] = useState(false);
   const [menuNotification, setMenuNotification] = useState(false);
   const userButton = useRef();
   const notificationsButton = useRef();
 
-  const userLinks = [
-    { id: 0, name: 'Meu Perfil', url: '/auth/me' },
-    { id: 1, name: 'Preferências', url: '/auth/settings' },
-    { id: 2, name: 'Sair', url: '/auth/logout' },
-  ];
+  const [userLinks, setUserLinks] = useState([]);
+  const [notificationsLinks, setNotificationsLinks] = useState([]);
 
-  const notificationsLinks = [
-    { id: 0, name: 'Teste 1', url: '/notification/1' },
-    { id: 1, name: 'Teste 2', url: '/notification/2' },
-    { id: 2, name: 'Teste 3', url: '/notification/3' },
-  ];
+  useEffect(() => {
+    if (user.id > 0) {
+      setUserLinks([
+        { id: 0, name: 'Meu Perfil', url: '/auth/me' },
+        { id: 1, name: 'Preferências', url: '/auth/settings' },
+        { id: 2, name: 'Sair', url: '/auth/logout' },
+      ]);
+    } else {
+      setUserLinks([
+        { id: 0, name: 'Entrar', url: '/auth/login' },
+        { id: 1, name: 'Cadastrar-se', url: '/auth/register' },
+        { id: 2, name: 'Recuperar Senha', url: '/auth/recoverPassword' },
+      ]);
+    }
+
+    setNotificationsLinks([
+      { id: 0, name: 'Teste 1', url: '/notification/1' },
+      { id: 1, name: 'Teste 2', url: '/notification/2' },
+      { id: 2, name: 'Teste 3', url: '/notification/3' },
+    ]);
+  }, [user]);
 
   const handleOpenMenuUser = () => {
     setMenuUser(!menuUser);

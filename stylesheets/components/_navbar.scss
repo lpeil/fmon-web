@@ -1,17 +1,21 @@
 /// @name navbar
 /// @group components
 
-$navbar-height: 75px;
+$navbar-height: 70px;
 
 .navbar {
   position: sticky;
   height: $navbar-height;
   background-color: $primary;
 
+  top: 0;
+
   .logo {
     height: $navbar-height;
     width: 60%;
     object-fit: cover;
+
+    cursor: pointer;
   }
 
   .links {
