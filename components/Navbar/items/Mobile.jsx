@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import {
   Grid,
@@ -16,8 +17,11 @@ import {
   Receipt as NewsIcon,
   Apple as LeagueIcon,
   Person as PersonIcon,
+  PersonAdd as PersonAddIcon,
   Settings as SettingsIcon,
   ExitToApp,
+  ChevronRight,
+  VpnKey as KeyIcon,
 } from '@material-ui/icons';
 
 const generalLinks = [
@@ -26,18 +30,36 @@ const generalLinks = [
   { name: 'Campeonatos', url: '/leagues', icon: LeagueIcon },
 ];
 
-const userLinks = [
-  { name: 'Meu Perfil', url: '/auth/me', icon: PersonIcon },
-  { name: 'Preferências', url: '/auth/settings', icon: SettingsIcon },
-  { name: 'Sair', url: '/auth/logout', icon: ExitToApp },
-];
-
 const NavbarMobile = () => {
+  const user = useSelector((state) => state.user);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [userLinks, setUserLinks] = useState([]);
 
   const toggleDrawer = (open) => () => {
     setOpenDrawer(open);
   };
+
+  useEffect(() => {
+    if (user.id > 0) {
+      setUserLinks([
+        { name: 'Meu Perfil', url: '/auth/me', icon: PersonIcon },
+        { name: 'Preferências', url: '/auth/settings', icon: SettingsIcon },
+        { name: 'Sair', url: '/auth/logout', icon: ExitToApp },
+      ]);
+    } else {
+      setUserLinks([
+        {
+          id: 0, name: 'Entrar', url: '/auth/login', icon: ChevronRight,
+        },
+        {
+          id: 1, name: 'Cadastrar-se', url: '/auth/register', icon: PersonAddIcon,
+        },
+        {
+          id: 2, name: 'Recuperar Senha', url: '/auth/recoverPassword', icon: KeyIcon,
+        },
+      ]);
+    }
+  }, [user]);
 
   const listLink = (link, key) => (
     <Link href={link.url} key={key} className="mobile-link" onClick={toggleDrawer(false)}>

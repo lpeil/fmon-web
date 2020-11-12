@@ -1,5 +1,5 @@
 import Navbar from './Navbar';
 
-const a = {};
+import AuthCard from './Cards/Auth';
 
-export { Navbar, a };
+export { Navbar, AuthCard };
