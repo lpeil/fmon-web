@@ -6,6 +6,10 @@ module.exports = withSass({
     importLoaders: 1,
     localIdentName: '[local]',
   },
+  env: {
+    server: process.env.SERVER,
+    notification: process.env.NOTIFICATION,
+  },
   webpack: (config, { defaultLoaders }) => {
     config.module.rules.push({
       test: /\.+(js|jsx|ts|tsx)$/,
